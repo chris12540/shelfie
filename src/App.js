@@ -35,6 +35,15 @@ class App extends Component {
 		});
 	};
 
+	getEditedProduct = editedProduct => {
+		const index = this.state.inventory.findIndex(item => item.id === editedProduct[0].id);
+		let updatedInventory = this.state.inventory.slice();
+		updatedInventory[index] = editedProduct[0];
+		this.setState({
+			inventory: updatedInventory
+		});
+	};
+
 	deleteProduct = id => {
 		const index = this.state.inventory.findIndex(item => item.id === id);
 		let updatedInventory = this.state.inventory.slice();
@@ -64,7 +73,7 @@ class App extends Component {
 					<Dashboard inventory={inventory} deleteProduct={this.deleteProduct} editProduct={this.editProduct}>
 						<Product />
 					</Dashboard>
-					<Form getAddedProduct={this.getAddedProduct} editItem={editItem} />
+					<Form getAddedProduct={this.getAddedProduct} editItem={editItem} getEditedProduct={this.getEditedProduct} />
 				</div>
 			</div>
 		);

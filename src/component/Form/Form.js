@@ -19,8 +19,8 @@ class Form extends Component {
 
 	componentDidUpdate(oldProps) {
 		if (oldProps.editItem !== this.props.editItem) {
-			const { name, price, img } = this.props.editItem;
-			this.setState({ name, price, img, showSave: true });
+			const { id, name, price, img } = this.props.editItem;
+			this.setState({ id, name, price, img, showSave: true });
 		}
 	}
 
@@ -33,6 +33,13 @@ class Form extends Component {
 		} else {
 			alert("Please enter in all the fields 😇");
 		}
+	};
+
+	save = () => {
+		const { id, name, price, img } = this.state;
+		axios.patch(api + `/${id}`, { id, name, price, img }).then(product => {
+			this.props.getEditedProduct(product);
+		});
 	};
 
 	cancel = () => {
@@ -74,7 +81,7 @@ class Form extends Component {
 					}}
 					className="form-input"
 				/>
-				<button className="button" onClick={showSave ? this.props.edit : this.submit}>
+				<button className="button" onClick={showSave ? this.save : this.submit}>
 					{showSave ? "Save" : "Submit"}
 				</button>
 				<button className="button" onClick={this.cancel}>
