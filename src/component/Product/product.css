@@ -1,0 +1,49 @@
+.product {
+	margin: 15px 0;
+	position: relative;
+}
+
+.product-image {
+	width: 300px;
+}
+
+.overview {
+	position: absolute;
+	bottom: 2px;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.4);
+	color: white;
+	font-family: sans-serif;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.product-title,
+.product-price {
+	text-shadow: 1px 1px 2px 1px gray;
+}
+
+.delete,
+.edit {
+	position: absolute;
+	right: 310px;
+	top: 0;
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: gray;
+}
+
+.delete:hover,
+.edit:hover {
+	cursor: pointer;
+	color: black;
+}
+
+.delete {
+}
+.edit {
+	top: 30px;
+}
